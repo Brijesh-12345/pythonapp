@@ -12,7 +12,7 @@ services:
       - db_data:/var/lib/postgresql/data
 
   backend:
-    build: ./backend
+    image: brijkuber/backend-login-app
     container_name: backend
     depends_on:
       - db
@@ -20,7 +20,7 @@ services:
       - "5000"
 
   middleware:
-    build: ./middleware
+    image: brijkuber/middleware-login-app
     container_name: middleware
     depends_on:
       - backend
@@ -28,6 +28,7 @@ services:
       - "3000"
 
   nginx:
+    image: brijkuber/nginx-login-app
     build: ./nginx
     container_name: nginx
     ports:
